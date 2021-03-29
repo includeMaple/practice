@@ -67,6 +67,56 @@ test()
 console.log(c)
 ```
 
+# 题
+
+## 题目一
+
+以下输出结果是：
+
+```javascript
+function test(){
+  var arr = [];
+  for(var i = 0;i < 10 ;i++){
+    arr[i] = function(){
+      console.log(i);
+    }
+  }
+  return arr;
+}
+var myArr = test();
+myArr[0]();
+myArr[1]();
+myArr[2]();
+myArr[3]();
+```
+
+## 题目二
+
+如何输出0 1 2 3
+
+## 参考
+
+1. 这里arr的每个元素是一个函数，要了解非立即执行的情况很多，这是其中一种（其他还有使用setTimeout、dom操作等），i每次要到执行的时候才会去寻找，而此时i已经变成了其他值
+2. 要变成正常输出的方法很多，①let利用其块级作用域(把var改为let，这里不再举例代码)②使用立即执行函数（匿名函数，立即执行），利用其函数作用域，代码如下
+
+```javascript
+function test(){
+  var arr = [];
+  for(var i = 0;i < 10 ;i++){
+    (function (j) {
+      arr[j] = function(){
+        console.log(j);
+      }
+    })(i)
+  }
+  return arr;
+}
+var myArr = test();
+myArr[0]();
+myArr[1]();
+myArr[2]();
+myArr[3]();
+```
 
 # 题
 
