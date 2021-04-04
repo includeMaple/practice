@@ -2,6 +2,71 @@
 
 ## 题目
 
+undefined==false，结果是true还是false
+
+## 参考
+
+if (xx) 是false的情况有6种
+
+1. undefined
+1. null
+1. 0
+1. NaN
+1. ”“
+1. false
+
+这六种中
+
+1. NaN与任何不相等，包括本身
+1. undefined == null // true
+1. 属于3种互相相等为true
+1. 其余相等结果都是false
+
+另外值得注意的是
+
+```javascript
+1==true; // true
+12 == true; // false
+```
+
+只能尝试性解释，==，当两边类型不同时，会进行隐式类型转换
+
+1. Number==Boolean: 尝试转换为Number
+1. Number==String：尝试转换Number
+1. undefined == Boolean: 似乎也是尝试转换为Number，因为Boolean(undefined)为false，Number(undefined) = NaN
+1. 但似乎不总是转换成Number，因为undefined==null为true，而NaN不等于任何值，包括本身
+
+目前暂时未找到权威合理的解释，我只能说：
+
+1. 不要使用==
+1. 使用强制类型转换，不要使用这种
+1. 了解但不使用
+
+ <!-- 3.1==与===区别
+==先转换类型再比较（值是否相等）
+===先判断类型，如果不是同一类型直接为false。（值和类型是否都相等）
+var a=[1,2];var b=[1,2];a==b //false 引用类型，引用的地址不一致
+var a=[1,2];var b=a;a[2].3; //b为[1,2,3]
+ 
+1.       强制类型转换和隐式类型转换
+强制：parseInt parseFloat toString
+隐式：if、逻辑运算、==、+拼接字符串
+1.       显示转换：一般指使用Number、String和Boolean三个构造函数
+Number(''/[]/null/false) // 0  Number(undefined/’123abc’) // NaN  Number('123') // 123
+String(undefined) // "undefined"  String(null)// "null"
+Boolean(-0/0/’’/null/undefined/NaN)//false  Boolean([]/数字/字符串)//true
+隐式转换
+1.       字符串连接符+：有字符串时，String()拼接;没有 字符串时，Number()计算 
+1+’’true’’//’1 true’’  1+true//2  1+ undefined// NaN  1+null/’’/[] //1
+2.       关系运算符>  <  >=  <=  = =  !=  = = =  != = =自增自减运算符++ / --
+算术运算符+  -  *  /  %：
+有一边是字符串时，Number()比较；两边都是字符串时，unicode编码比较
+‘’2’’>10 //false  ‘’2’’>’’10’’//true  ‘’abc’’>’’aac’’//true -->
+
+# 题
+
+## 题目
+
 以下代码分别输出什么
 
 ```javascript
