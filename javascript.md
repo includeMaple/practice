@@ -2,6 +2,76 @@
 
 ## 题目
 
+```javascript
+let arr = []
+let obj = {}
+let str = 'out'
+function test(val){
+  if (Array.isArray(val)) {
+    arr.push('test')
+  } else if (Object.prototype.toString(val) === 'Object object') {
+    arr = {
+      test: ''
+    }
+  }else {
+    val = 'test'
+  }
+}
+test(arr);
+test(obj);
+test(str);
+console.log(arr)
+console.log(obj)
+console.log(str)
+```
+
+1. 请写出上面的输出结果
+1. 为什么
+
+## 参考
+
+```javascript
+['test'] // 变量被改变
+{} // 变量未改变
+out // 变量未改变
+```
+
+函数函数参数有两种传递方式：
+
+1. 传值（基本类型）：将实参的值copy给函数，函数内部操作对象（形参）是实参的copy，不会影响实参
+1. 传地址（引用类型）：将实参的地址产地给形参，这种情况一般有两种，①形参重新赋值一个地址，切断与形参之间的联系，如上obj②操作形参数据但不改变地址，如上arr
+
+
+# 题
+
+## 题目
+
+请分别写出下面的结果：
+
+```JavaScript
+2+3+"4"
+2+"3"+4
+2+"3"-4
+```
+
+## 参考
+
+1. 54
+1. 234
+1. 19
+
+加法有两种含义①数值运算②字符串拼接，另外这里涉及到加法是从左往右运算的，所以
+
+2+3+"4" = (2+3)+"4" = 5+"4"=54
+
+2+"3"+4 = (2+"3")+4 = "23"+4 = 234
+
+减法只有一个功能，做数值运算
+
+# 题
+
+## 题目
+
 undefined==false，结果是true还是false
 
 ## 参考
@@ -19,7 +89,7 @@ if (xx) 是false的情况有6种
 
 1. NaN与任何不相等，包括本身
 1. undefined == null // true
-1. 属于3种互相相等为true
+1. 其余3种互相相等为true
 1. 其余相等结果都是false
 
 另外值得注意的是
@@ -28,7 +98,7 @@ if (xx) 是false的情况有6种
 1==true; // true
 12 == true; // false
 ```
-
+<!-- 
 只能尝试性解释，==，当两边类型不同时，会进行隐式类型转换
 
 1. Number==Boolean: 尝试转换为Number
@@ -40,7 +110,7 @@ if (xx) 是false的情况有6种
 
 1. 不要使用==
 1. 使用强制类型转换，不要使用这种
-1. 了解但不使用
+1. 了解但不使用 -->
 
  <!-- 3.1==与===区别
 ==先转换类型再比较（值是否相等）
