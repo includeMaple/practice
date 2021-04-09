@@ -5,12 +5,12 @@
 ```javascript
 let arr = []
 let obj = {}
-let str = 'out'
+let str = ''
 function test(val){
   if (Array.isArray(val)) {
-    arr.push('test')
-  } else if (Object.prototype.toString(val) === 'Object object') {
-    arr = {
+    val.push('test')
+  } else if (Object.prototype.toString(val) === '[object Object]') {
+    val = {
       test: ''
     }
   }else {
