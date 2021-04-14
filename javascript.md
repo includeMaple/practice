@@ -41,6 +41,74 @@ out // 变量未改变
 1. 传值（基本类型）：将实参的值copy给函数，函数内部操作对象（形参）是实参的copy，不会影响实参
 1. 传地址（引用类型）：将实参的地址产地给形参，这种情况一般有两种，①形参重新赋值一个地址，切断与形参之间的联系，如上obj②操作形参数据但不改变地址，如上arr
 
+# 题
+
+## 题目
+
+下面为true还是false
+
+```javascript
+[]==![]
+```
+
+## 参考
+
+就常识来说，这是false，但实际情况是true。
+
+```javascript
+[]==![]
+[]==false // true
+```
+
+==作为比较时：
+
+1. 值类型==值类型，对比值
+1. 引用类型==值类型， 对象转换为值类型，再进行比较
+
+要了解以下结果都为false：
+
+```javascript
+![]
+!{}
+!" "
+!"0"
+```
+
+要记住哪些前面添加！结果是false，只要记住哪些为true，就要了解
+
+Falsy: 主要有6种:
+
+  >1. undefined
+  >1. null
+  >1. 0 // 包括-0、0n（BigInt zero）
+  >1. NaN
+  >1. '' // 空串，同""、``
+  >1. false
+  >1. document.all
+
+Trutly: 除了Falsy都是
+
+注：
+
+1. 上面罗列Falsy是6种，如果把0都加上，就是8种，再加上document.all是9种
+1. document.all在mdn中是Falsy，不过上述6种可以在if(XX)得到false，而if(document.all)走true，使用&&时，也是true的走向; 不过Boolean(document.all) = false, !document.all=true
+https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+
+<!-- # 题
+
+## 题目
+
+以下结果为true还是false
+
+```javascript
+Object.constructor === Object.constructor.prototype.constructor
+```
+
+## 参考
+
+可以了解：
+Object.prototype.constructor
+The constructor property returns a reference to the Object constructor function that created the instance object. Note that the value of this property is a reference to the function itself, not a string containing the function's name. -->
 
 # 题
 
